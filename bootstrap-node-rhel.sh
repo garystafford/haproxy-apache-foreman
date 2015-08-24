@@ -38,3 +38,9 @@ else
     # Alternative, run manually on each host, after provisioning is complete...
     #sudo puppet agent --test --waitforcert=60
 fi
+
+    # Set-up firewall
+    sudo firewall-cmd --permanent --add-service=http
+
+    sudo firewall-cmd --reload
+    sudo systemctl enable firewalld

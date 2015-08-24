@@ -32,22 +32,7 @@ configuration files for alternate environments since the `Vagrantfile` is design
 
 
 #### Instructions
-Provision the Foreman VM first, before the agents. It will takes several minutes to fully provision the VM.
-```sh
-vagrant up theforeman.example.com
-```
-Important, when the provisioning is complete, note the output from Vagrant. The output provides the `admin` login password and URL for the Foreman console. Example output below.
-```text
-==> theforeman.example.com:   Success!
-==> theforeman.example.com:   * Foreman is running at https://theforeman.example.com
-==> theforeman.example.com:       Initial credentials are admin / 7x2fpZBWgVEHvzTw
-==> theforeman.example.com:   * Foreman Proxy is running at https://theforeman.example.com:8443
-==> theforeman.example.com:   * Puppetmaster is running at port 8140
-==> theforeman.example.com:   The full log is at /var/log/foreman-installer/foreman-installer.log
-```
-Log into Foreman's browser-based console using the information provided in the output from Vagrant (example above). Change the `admin` account password, and/or set-up your own `admin` account(s).
-
-Next, build (1) HAProxy and (2) Apache VMs. Again, it will takes several minutes to fully provision the two VMs.
+Build (1) HAProxy and (2) Apache VMs. Again, it will takes several minutes to fully provision the two VMs.
 ```sh
 vagrant up node01.example.com node02.example.com haproxy.example.com
 ```
@@ -103,6 +88,7 @@ The use of the specific <machine> name is optional in most cases.
 * `vagrant status <machine>`
 * `vagrant ssh <machine>`
 * `vagrant global-status`
+* `vagrant destroy haproxy.example.com node01.example.com node02.example.com -f`
 
 #### Useful Logs for Debugging Project Issues
 Some logs require sudo access
