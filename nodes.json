@@ -1,0 +1,33 @@
+{
+  "nodes": {
+    "theforeman.example.com": {
+      ":ip": "192.168.35.5",
+      "ports": [],
+      ":memory": 1024,
+      ":box": "puppetlabs/centos-7.0-64-puppet",
+      ":bootstrap": "bootstrap-foreman.sh"
+    },
+    "haproxy.example.com": {
+      ":ip": "192.168.35.101",
+      "ports": [],
+      ":memory": 512,
+      ":box": "chef/centos-6.5",
+      ":box": "puppetlabs/centos-7.0-64-puppet",
+       ":bootstrap": "bootstrap-node-rhel.sh"
+    },
+    "node01.example.com": {
+      ":ip": "192.168.35.121",
+      "ports": [],
+      ":memory": 512,
+      ":box": "puppetlabs/centos-7.0-64-puppet",
+      ":bootstrap": "bootstrap-node-rhel.sh"
+    },
+    "node02.example.com": {
+      ":ip": "192.168.35.122",
+      "ports": [],
+      ":memory": 512,
+      ":box": "puppetlabs/centos-7.0-64-puppet",
+      ":bootstrap": "bootstrap-node-rhel.sh"
+    }
+  }
+}
