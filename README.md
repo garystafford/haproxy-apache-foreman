@@ -47,14 +47,14 @@ Important, when the provisioning is complete, note the output from Vagrant. The 
 ```
 Log into Foreman's browser-based console using the information provided in the output from Vagrant (example above). Change the `admin` account password, and/or set-up your own `admin` account(s).
 
-Next, build three puppet haproxy and apache VMs. Again, it will takes several minutes to fully provision the two VMs.
+Next, build (1) HAProxy and (2) Apache VMs. Again, it will takes several minutes to fully provision the two VMs.
 ```sh
-vagrant up
+vagrant up node01.example.com node02.example.com haproxy.example.com
 ```
 
-Next, complete the CSR process. Read the [blog post](http://wp.me/p1RD28-1ok) for complete instructions.
+Next, complete the CSR process. You can use Foreman's Autosign feature, or manaully start, as shown below. Read the [blog post](http://wp.me/p1RD28-1ok) for complete instructions.
 ```sh
-# ssh into haproxy node
+# ssh into the HAProxy VM
 vagrant ssh haproxy.example.com
 # initiate certificate signing request (CSR)
 sudo puppet agent --test --waitforcert=60
@@ -62,18 +62,13 @@ sudo puppet agent --test --waitforcert=60
 ```
 
 ```sh
-# ssh into first node
+# repeat for Apache VMs
+exit
 vagrant ssh node01.example.com
-# initiate certificate signing request (CSR)
 sudo puppet agent --test --waitforcert=60
 # sign certificate within foreman to complete CSR
-```
-  
-```sh
 exit
-# ssh into second node
 vagrant ssh node02.example.com
-# initiate certificate signing request (CSR)
 sudo puppet agent --test --waitforcert=60
 # sign certificate within foreman to complete CSR
 ```
