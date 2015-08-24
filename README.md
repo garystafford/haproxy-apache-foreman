@@ -32,9 +32,12 @@ configuration files for alternate environments since the `Vagrantfile` is design
 
 
 #### Instructions
+Assumes Foreman VM was already created. See [Installing Foreman and Puppet Agent on Multiple VMs Using Vagrant and VirtualBox](http://wp.me/p1RD28-1nb).
+
 Build (1) HAProxy and (2) Apache VMs. Again, it will takes several minutes to fully provision the two VMs.
 ```sh
 vagrant up node01.example.com node02.example.com haproxy.example.com
+vagrant hostmanager
 ```
 
 Next, complete the CSR process. You can use Foreman's Autosign feature, or manaully start, as shown below. Read the [blog post](http://wp.me/p1RD28-1ok) for complete instructions.
