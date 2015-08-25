@@ -56,10 +56,12 @@ else
     sudo puppet module install -i /etc/puppet/environments/production/modules puppetlabs-apache
 
     # apache config module
-    wget -N https://github.com/garystafford/garystafford-apache_example_config/archive/v0.1.0.tar.gz && \
-    sudo puppet module install -i /etc/puppet/environments/production/modules ~/v0.1.0.tar.gz --force
- 
+    #wget -N https://github.com/garystafford/garystafford-apache_example_config/archive/v0.1.0.tar.gz && \
+    #sudo puppet module install -i /etc/puppet/environments/production/modules ~/v0.1.0.tar.gz --force
+    sudo puppet module install garystafford-apache_example_config
+
     # haproxy config module
-    wget -N https://github.com/garystafford/garystafford-haproxy_node_config/archive/v0.1.0.tar.gz && \
-    sudo puppet module install -i /etc/puppet/environments/production/modules ~/v0.1.0.tar.gz --force  
+    #wget -N https://github.com/garystafford/garystafford-haproxy_node_config/archive/v0.1.0.tar.gz && \
+    #sudo puppet module install -i /etc/puppet/environments/production/modules ~/v0.1.0.tar.gz --force  
+    sudo puppet module install garystafford-haproxy_node_config
 fi

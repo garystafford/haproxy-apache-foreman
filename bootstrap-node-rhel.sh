@@ -40,7 +40,6 @@ else
 fi
 
     # Set-up firewall
-    sudo firewall-cmd --permanent --add-service=http
-
-    sudo firewall-cmd --reload
+    sudo firewall-cmd --permanent --add-service=http && \
+    sudo firewall-cmd --reload && \
     sudo systemctl enable firewalld
