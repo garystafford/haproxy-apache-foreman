@@ -1,12 +1,12 @@
 ### Automate the Provisioning and Configuration of HAProxy and an Apache Web Server Cluster Using Foreman
 Use Vagrant, Foreman, and Puppet to provision and configure HAProxy as a reverse proxy, load-balancer for a cluster of Apache web servers. Project is part of my blog post, [Automate the Provisioning and Configuration of HAProxy and an Apache Web Server Cluster Using Foreman](http://wp.me/p1RD28-1ok).
 
-The GitHub project has been updated 8/23/2015. Changes were required to fix incapability issues with the latest versions of Puppet and Foreman. See http://theforeman.org/manuals/1.9/index.html#3.1.2PuppetCompatibility for details. Additionally, the version of CentOS on all VMs was updated from 6.6 to 7.1 and the version of Foreman was updated from 1.7 to 1.9.
+The GitHub project has been updated 8/23/2015. Changes were required to fix incapability issues with the latest versions of Puppet and Foreman. For details, see [Puppet Compatibility](http://theforeman.org/manuals/1.9/index.html#3.1.2PuppetCompatibility). Additionally, the version of CentOS on all VMs was updated from 6.6 to 7.1 and the version of Foreman was updated from 1.7 to 1.9.
 
 <p><a href="https://programmaticponderings.wordpress.com/?attachment_id=3459" title="HAProxyApacheDemo" rel="attachment"><img width="620" height="369" src="https://programmaticponderings.files.wordpress.com/2015/08/haproxyapachedemo.png?w=620" alt="HAProxyApacheDemo"></a></p>
 
 #### Vagrant Plug-ins
-This project requires the Vagrant vagrant-hostmanager plugin to be installed. The Vagrantfile uses the vagrant-hostmanager plugin to automatically ensure all DNS entries are consistent between guests as well as the host, in the `/etc/hosts` file. An example of the modified `/etc/hosts` file is shown below.
+This project requires the Vagrant `vagrant-hostmanager` plugin to be installed. The Vagrantfile uses the vagrant-hostmanager plugin to automatically ensure all DNS entries are consistent between guests as well as the host, in the `/etc/hosts` file. An example of the modified `/etc/hosts` file is shown below.
 ```text
 ## vagrant-hostmanager-start id: c472843a-e854-4e58-8a13-856b3b0766f2
 192.168.35.5   theforeman.example.com
@@ -18,7 +18,7 @@ This project requires the Vagrant vagrant-hostmanager plugin to be installed. Th
 
 You can manually run `vagrant hostmanager` to update `/etc/hosts` at anytime.  
 
-This project also requires the Vagrant vagrant-vbguest plugin is also used to keep the vbguest tools updated.
+This project also requires the Vagrant `vagrant-vbguest` plugin is also used to keep the vbguest tools updated.
 ```sh
 vagrant plugin install vagrant-hostmanager
 vagrant plugin install vagrant-vbguest
@@ -45,21 +45,23 @@ Next, complete the CSR process. You can use Foreman's Autosign feature, or manau
 # ssh into the HAProxy VM
 vagrant ssh haproxy.example.com
 # initiate certificate signing request (CSR)
-sudo puppet agent --test --waitforcert=60
-# sign certificate within foreman to complete CSR
+sudo puppet agent -t -w=60
+# sign cert within foreman to complete CSR and start run
 ```
 
 ```sh
 # repeat for Apache VMs
 exit
 vagrant ssh node01.example.com
-sudo puppet agent --test --waitforcert=60
-# sign certificate within foreman to complete CSR
+sudo puppet agent -t -w=60
+# sign cert within foreman
 exit
 vagrant ssh node02.example.com
-sudo puppet agent --test --waitforcert=60
-# sign certificate within foreman to complete CSR
+sudo puppet agent -t -w=60
+# sign cert within foreman
 ```
+
+You can always force a puppet run on a node using `sudo puppet agent -t`.
 
 #### Forwarding Ports
 To expose forwarding ports, add them to the 'ports' array. For example:
