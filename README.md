@@ -3,7 +3,7 @@ Use Vagrant, Foreman, and Puppet to provision and configure HAProxy as a reverse
 
 The GitHub project has been updated 8/23/2015. Changes were required to fix incapability issues with the latest versions of Puppet and Foreman. See http://theforeman.org/manuals/1.9/index.html#3.1.2PuppetCompatibility for details. Additionally, the version of CentOS on all VMs was updated from 6.6 to 7.1 and the version of Foreman was updated from 1.7 to 1.9.
 
-<p><a href="https://programmaticponderings.wordpress.com/?attachment_id=3459" title="New Foreman Hosts" rel="attachment"><img width="620" height="390" src="https://programmaticponderings.files.wordpress.com/2015/08/new-foreman-hosts.png?w=620" alt="New Foreman Hosts"></a></p>
+<p><a href="https://programmaticponderings.wordpress.com/?attachment_id=3459" title="HAProxyApacheDemo" rel="attachment"><img width="620" height="369" src="https://programmaticponderings.files.wordpress.com/2015/08/haproxyapachedemo.png?w=620" alt="HAProxyApacheDemo"></a></p>
 
 #### Vagrant Plug-ins
 This project requires the Vagrant vagrant-hostmanager plugin to be installed. The Vagrantfile uses the vagrant-hostmanager plugin to automatically ensure all DNS entries are consistent between guests as well as the host, in the `/etc/hosts` file. An example of the modified `/etc/hosts` file is shown below.
